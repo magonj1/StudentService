@@ -28,14 +28,14 @@ public class StudentController {
 	@RequestMapping("/getAll")
 	public List<Student> getStudents()
 	{
-
+        //Added the get all features in the controller
 		return studentService.getAll();
 	}
 	
 	@RequestMapping("/get")
 	public Student getStudent(@RequestParam String firstName)
 	{
-	
+	   
 		return studentService.getByFirstName(firstName);
 	}
 	
