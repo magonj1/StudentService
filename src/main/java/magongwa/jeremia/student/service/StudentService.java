@@ -1,6 +1,7 @@
 package magongwa.jeremia.student.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,35 +15,20 @@ public class StudentService {
 	@Autowired
 	private StudentRepository studentRepository;
     
-	public Student create(String student_No,String firstName,String lastName,int age)
-	{
-		return studentRepository.save(new Student(student_No,firstName,lastName,age));
-	}
-    
-	public List<Student> getAll()
-	{
-		return studentRepository.findAll();
-	}
-	public Student getByFirstName(String firstName)
-	{
-		return studentRepository.findByFirstName(firstName);
-	}
-	public Student update(String student_No,String firstName,String lastName,int age)
-	{
-		Student student  = studentRepository.findByFirstName(firstName);
-		student.setAge(age);
-		student.setStudent_No(student_No);
-		student.setLastName(lastName);
-		return studentRepository.save(student);
-	}
-	public void deleteAll()
-	{
-		studentRepository.deleteAll();
-	}
-	public void delete(String firstName)
-	{
-		Student student  = studentRepository.findByFirstName(firstName);
-		studentRepository.delete(student);
-	}
+	 public List<Student> findAll() {
+	        return studentRepository.findAll();
+	 }
+
+	 public Optional<Student> findById(String id) {
+	        return studentRepository.findById(id);
+	 }
+
+     public Student save(Student student) {
+	        return studentRepository.save(student);
+	  }
+
+	 public void deleteById(String id) {
+		 studentRepository.deleteById(id);
+	 }
 	
 }
